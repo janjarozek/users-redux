@@ -6,7 +6,7 @@ export default function UsersCard({user}) {
 
     return (
         <div>
-            <img src={picture.medium} alt={`Picture of ${name.first} ${name.last}`}></img>
+            <img src={picture.medium} alt={`${name.first} ${name.last}`}></img>
             <p>{name.title} {name.first} {name.last}</p>
         </div>
     )

@@ -1,31 +1,39 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
+import { connect } from 'react-redux'
+import { getUsers } from '../redux'
 
 import UsersCard from '../components/UsersCard'
 
-export default function Users() {
-    const [users, setUsers] = useState([]);
-
-    const getUsers = async () => {
-        const response = await fetch('https://randomuser.me/api/?results=10');
-        if (response.ok) {
-            const data = await response.json();
-            setUsers(data.results);
-            console.log(data.results);
-        } else {
-            console.error("Error occured! See response: ", response);
-        }
-    }
+function Users( props ) {
+    const {users, isLoading, isError, getUsers} = props;
 
     useEffect( () => {
-        getUsers();
+        getUsers()
     }, []);
 
     return (
         <div>
-            {!users && <p>Loading users data...</p>}
+            {isLoading && <p>Loading users data...</p>}
+            {isError && <p>An error occured when fetching API data...</p>}
             {users.map( user =>
-                <UsersCard user={user} key={user.id} />
+                <UsersCard user={user} key={`user-${user.login.uuid}`} />
             )}
         </div>
     )
 }
+
+function mapStateToProps(state) {
+    return {
+        users: state.usersReducer.users,
+        isLoading: state.usersReducer.isLoading,
+        isError: state.usersReducer.isError
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getUsers: () => dispatch(getUsers())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
