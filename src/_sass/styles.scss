@@ -1,5 +1,59 @@
-.header {
-    color: hsl(200, 50%, 50%);
-    font-family: 'Trebuchet MS';
+$theme-light-blue: hsl(200, 50%, 80%);
+$theme-mid-blue: hsl(200, 50%, 50%);
+$theme-dark-blue: hsl(200, 50%, 20%);
+$theme-font: 'Trebuchet MS';
+
+.b-header {
+    margin: 10px 0px;
+    color: $theme-mid-blue;
+    font-family: $theme-font;
     font-size: 1 em;
+}
+
+.b-navigation {
+    margin: 40px;
+}
+
+.b-navigation__menulist {
+    padding: 0px;
+    margin: 0px;
+}
+
+.b-navigation__menulist__item {
+    background-color: $theme-light-blue;
+    list-style-type: none;
+    display: inline;
+    margin: 0px 5px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+
+    &:hover {
+        color: $theme-light-blue;
+        background-color: $theme-dark-blue;
+        box-shadow:
+        3px 3px 0px 0px $theme-light-blue,
+        3px 3px 5px 2px $theme-mid-blue;
+    }
+
+    a {
+        color: $theme-dark-blue;
+        font-family: $theme-font;
+        font-size: 1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $theme-dark-blue;
+
+        &:hover {
+            color: $theme-light-blue;
+        }
+    }
+    &--selected {
+        // box-shadow: 0px 1px 0px 0px $theme-dark-blue;
+        a {
+            color: #f00;
+        }
+    }
+
+
 }
