@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 import Header from './components/Header';
 import Menu from './components/Menu/containers/Menu';
 
-import Home from './pages/Home'
+import HomePage from './pages/HomePage'
 import UsersPage from './pages/UsersPage'
 import Contact from './pages/Contact'
 
@@ -26,14 +26,14 @@ function App() {
         <Header />
         <Menu />
         <Switch>
+          <Route exact path="/home">
+            <HomePage />
+          </Route>
           <Route path="/users">
             <UsersPage />
           </Route>
           <Route path="/contact">
             <Contact />
-          </Route>
-          <Route path="/">
-            <Home />
           </Route>
         </Switch>
       </div>

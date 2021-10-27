@@ -1,0 +1,24 @@
+@use '../../../_sass/base';
+
+.b-home__title{
+    color: base.$theme-mid-blue;
+    text-transform: uppercase;
+    font-family: base.$theme-font;
+}
+.b-home__button {
+    display: inline-block;
+    margin: 0px 5px;
+    padding: 10px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: base.$theme-mid-blue;
+    color: base.$theme-light-blue;
+    font-family: base.$theme-font;
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    &:hover {
+        color: base.$theme-mid-blue;
+        background-color: base.$theme-light-blue;
+    }
+}

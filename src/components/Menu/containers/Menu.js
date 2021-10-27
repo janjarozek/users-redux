@@ -4,7 +4,7 @@ import MenuList from '../components/MenuList'
 import '../../../_sass/styles.scss'
 
 const menu = [
-    { to:'/', label:'home' },
+    { to:'/home', label:'home' },
     { to:'/users', label:'users' },
     { to:'/contact', label:'contact' },
 ];
