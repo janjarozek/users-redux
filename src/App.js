@@ -11,7 +11,7 @@ import Menu from './components/Menu/containers/Menu';
 
 import HomePage from './pages/HomePage'
 import UsersPage from './pages/UsersPage'
-import Contact from './pages/Contact'
+import Info from './pages/InfoPage'
 
 const middleware = [thunk];
 // let store = createStore(persistedReducer)
@@ -33,7 +33,7 @@ function App() {
             <UsersPage />
           </Route>
           <Route path="/contact">
-            <Contact />
+            <Info />
           </Route>
         </Switch>
       </div>

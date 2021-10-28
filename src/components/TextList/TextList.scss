@@ -1,0 +1,11 @@
+@use '../../_sass/base';
+
+.b-list {
+    margin: 0px;
+    padding-left: 40px;
+}
+
+.b-list__item {
+    list-style-type: circle;
+    text-align: left;
+}

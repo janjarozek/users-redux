@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { getUsers, getRandomUsers, resetUsers } from '../../Users/redux'
 
 import Button from '../components/Button'
-import HomeHeader from '../components/HomeHeader'
+import PageHeader from '../../PageHeader'
 
 import '../containers/Home.scss'
 
@@ -27,14 +27,22 @@ class Home extends React.Component {
                 this.props.resetUsers();
             }
         }
+        this.handleStoreUsers = () => {
+            if (this.props.users.length === 0) {
+                console.log('No users in the array!');
+            } else {
+                localStorage.setItem("users", JSON.stringify(this.props.users));
+            }
+        }
     }
     render() {
         return (
             <div>
-                <HomeHeader text="Choose what to do with the users list." />
+                <PageHeader text="Choose what to do with the users list." />
                 <Button label="Load 10 random users" handler={this.handleLoadButton}/>
                 <Button label="Reset" handler={this.handleResetButton}/>
                 <Button label="Add 1 user" handler={this.handleAddButton}/>
+                <Button label="Store users" handler={this.handleStoreUsers}/>
             </div>
         )
     }
