@@ -34,6 +34,9 @@ class Home extends React.Component {
                 localStorage.setItem("users", JSON.stringify(this.props.users));
             }
         }
+        this.handleConsole = () => {
+            console.log(this.props.users);
+        }
     }
     render() {
         return (
@@ -43,6 +46,7 @@ class Home extends React.Component {
                 <Button label="Reset" handler={this.handleResetButton}/>
                 <Button label="Add 1 user" handler={this.handleAddButton}/>
                 <Button label="Store users" handler={this.handleStoreUsers}/>
+                <Button label="Console" handler={this.handleConsole}/>
             </div>
         )
     }

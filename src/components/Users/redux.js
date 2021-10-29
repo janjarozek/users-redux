@@ -13,9 +13,9 @@ const reset_users_from_state = () => ({type: RESET_USERS_FROM_STATE});
 const save_temp_users_in_global_state = () => ({type: SAVE_TEMP_USERS_IN_GLOBAL_STATE});
 const save_local_users_in_global_state = data => ({type: SAVE_LOCAL_USERS_IN_GLOBAL_STATE, payload: data});
 
-export const saveLocalUsers = (data) => {
+export const saveLocalUsers = localUsers => {
     return function(dispatch) {
-        dispatch(save_local_users_in_global_state(data));
+        dispatch(save_local_users_in_global_state(localUsers));
         // dispatch(save_temp_users_in_global_state());
     }
 }
@@ -69,36 +69,36 @@ const INITIAL_STATE = {
 export default function usersReducer(state = INITIAL_STATE, action) {
     switch(action.type) {
         case SAVE_LOCAL_USERS_IN_GLOBAL_STATE:
-            return ({...state,
-                users: [...state.users, action.payload]
-            });
+            return { ...state,
+                users: action.payload
+            };
         case SAVE_TEMP_USERS_IN_GLOBAL_STATE:
-            return ({...state,
-            users: [...state.users, ...state.tempUsers]
-        });
+            return {...state,
+                users: [...state.users, ...state.tempUsers]
+            };
         case RESET_USERS_FROM_STATE:
-            return ({...state,
+            return {...state,
                 users: [],
                 tempUsers: [],
                 isLoading: false,
-                isError: false}
-            );
+                isError: false
+            };
         case GET_USERS_FROM_API_REQUEST:
-            return ({ ...state,
+            return { ...state,
                 isLoading: true,
-                isError: false}
-                );
+                isError: false
+            };
         case GET_USERS_FROM_API_SUCCESS:
-            return ({ ...state,
+            return { ...state,
                 tempUsers: action.payload,
                 isLoading: false,
-                isError: false}
-                );
+                isError: false
+            };
         case GET_USERS_FROM_API_FAILURE:
-            return ({ ...state,
+            return { ...state,
                 isLoading: false,
-                isError: true}
-                );
+                isError: true
+            };
         default:
             return state;
     }

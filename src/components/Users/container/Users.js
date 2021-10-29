@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getUsers, saveLocalUsers } from '../redux'
+import { saveLocalUsers } from '../redux'
 
 import UsersCard from '../components/UsersCard'
 
 class Users extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     const state = {
-    //     }
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            localUsers: JSON.parse(localStorage.getItem("users"))
+        }
+    }
+
     componentDidMount() {
-        const localUsers = JSON.parse(localStorage.getItem("users"));
-        // const localUsers = localStorage.getItem("users");
-        if (localUsers !== null) {
-            // console.log('got local users');
-            console.log(localUsers);
-            saveLocalUsers(localUsers);
+        if (this.state.localUsers.length !== 0) {
+            this.props.saveLocalUsers(this.state.localUsers);
         } else {
             console.log('No users in local storage!')
         }
@@ -24,6 +22,7 @@ class Users extends Component {
 
     render() {
         const {users, isLoading, isError} = this.props;
+
         return (
             <div>
                 {isLoading && <p>Loading users data...</p>}
@@ -47,7 +46,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getUsers: amount => dispatch(getUsers(amount)),
         saveLocalUsers: data => dispatch(saveLocalUsers(data))
     }
 }

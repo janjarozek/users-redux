@@ -11,7 +11,7 @@ const menu = [
 
 export default function Menu() {
     return (
-        <nav className="b-navigation">
+        <nav className="nav">
             <MenuList menuList={menu}/>
         </nav>
     )
