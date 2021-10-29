@@ -7,6 +7,7 @@ const content = [
     "Reset - resets completely all users.",
     "Add 1 user - adds 1 user to existing set of users.",
     "Store users - saves users into Local Storage.",
+    "Console - writes the localStorage user object in console.log.",
     "Users Page - checks first if Local Storage contains saved users and then displays them."
 ]
 
