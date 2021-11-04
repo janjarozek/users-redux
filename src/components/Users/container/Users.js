@@ -13,7 +13,7 @@ class Users extends Component {
     }
 
     componentDidMount() {
-        if (this.state.localUsers.length !== 0) {
+        if (this.state.localUsers) {
             this.props.saveLocalUsers(this.state.localUsers);
         } else {
             console.log('No users in local storage!')

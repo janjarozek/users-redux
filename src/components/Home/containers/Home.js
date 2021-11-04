@@ -25,6 +25,7 @@ class Home extends React.Component {
                 console.log('Users array already empty!');
             } else {
                 this.props.resetUsers();
+                localStorage.clear();
             }
         }
         this.handleStoreUsers = () => {
